@@ -1,11 +1,13 @@
+# обновляем код main.py
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
-import os
 
 app = FastAPI()
 
 @app.get("/")
-async def read_index():
-    # Указываем путь к файлу
-    file_path = "public/index.html"
-    return FileResponse(file_path)
+def read_root():
+    return {"message": "Hello, World!"}
+
+# новый маршрут
+@app.get("/custom")
+def read_custom_message():
+    return {"message": "This is a custom message!"}
